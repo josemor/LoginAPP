@@ -24,6 +24,7 @@ export class RegistroComponent implements OnInit {
   }
 
   onSubmit( form: NgForm ) {
+    let mensaje: string;
     if ( form.invalid ) {
       return;
     }
@@ -42,12 +43,14 @@ export class RegistroComponent implements OnInit {
         }
         this.router.navigateByUrl('/home');
       }, (err) => {
-        console.log(err.error.error.message);
-        Swal.fire({
-          icon: 'error',
-          text: err.error.error.message,
-          title: 'Error al registrar'
-        });
+        if (err.error.error.message === 'EMAIL_EXISTS') {
+          mensaje = 'El correo electronico ya existe';
+          Swal.fire({
+            allowOutsideClick: false,
+            icon: 'error',
+            text: mensaje
+          });
+        }
       });
   }
 

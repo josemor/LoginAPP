@@ -9,15 +9,8 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor( private auth: AuthService,
-               private router: Router) { }
+  constructor( ) { }
 
   ngOnInit() {
   }
-
-  salir() {
-    this.auth.logOut();
-    this.router.navigateByUrl('/login');
-  }
-
 }

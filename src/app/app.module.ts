@@ -10,6 +10,10 @@ import { AppComponent } from './app.component';
 import { RegistroComponent } from './pages/registro/registro.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
+import { HeroeComponent } from './pages/heroe/heroe.component';
+import { HeroesComponent } from './pages/heroes/heroes.component';
+import { NavbarComponent } from './pages/shared/navbar/navbar.component';
+
 
 
 @NgModule({
@@ -17,7 +21,10 @@ import { LoginComponent } from './pages/login/login.component';
     AppComponent,
     RegistroComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    HeroeComponent,
+    HeroesComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

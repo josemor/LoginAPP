@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit( form: NgForm ) {
+    let mensaje: string;
     if ( form.invalid ) {
       return;
     }
@@ -41,6 +42,7 @@ export class LoginComponent implements OnInit {
     Swal.showLoading();
 
     this.auth.logIn( this.usuario ).subscribe( resp => {
+
       console.log(resp);
       Swal.close();
       if (this.recordarUsuario) {
@@ -48,12 +50,13 @@ export class LoginComponent implements OnInit {
       }
       this.router.navigateByUrl('/home');
       }, (err) => {
-        console.log(err.error.error.message);
-        Swal.fire({
-          icon: 'error',
-          text: err.error.error.message,
-          title: 'Error al autenticar'
-        });
+        if (err.error.error.message === 'EMAIL_NOT_FOUND' || err.error.error.message === 'INVALID_PASSWORD') {
+          mensaje = 'Usuario y/o contaseña invalidos, intenta nuevamente o registrate.';
+          Swal.fire({
+            icon: 'error',
+            text: mensaje
+          });
+        }
       });
   }
 

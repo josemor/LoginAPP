@@ -69,10 +69,10 @@ export class AuthService {
     localStorage.setItem('token', idToken);
 
     // tslint:disable-next-line: prefer-const
-    let hoy = new Date();
+    /*let hoy = new Date();
     hoy.setSeconds(3600);
 
-    localStorage.setItem('expira', hoy.getTime().toString());
+    localStorage.setItem('expira', hoy.getTime().toString());*/
   }
 
   leerToken() {
@@ -85,8 +85,8 @@ export class AuthService {
     return this.userToken;
   }
 
-  estadoAutenticacion(): boolean {
-    if (this.userToken.length < 2) {
+  /*estadoAutenticacion(): boolean {
+    if (this.userToken.length > 2) {
       return false;
     }
     const expira = Number(localStorage.getItem('expira'));
@@ -97,5 +97,9 @@ export class AuthService {
     } else {
       return false;
     }
+  }*/
+
+  estadoAutenticacion(): boolean {
+    return  this.userToken.length > 2;
   }
 }
